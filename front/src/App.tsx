@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useRef, useState } from "react";
+import "./App.css";
+import { mf98Transformer } from "../../src/transformer/mf97";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const [shownText, setShownText] = useState<string>("");
+
+  const handleTransform = () => {
+    if (!textareaRef.current) return;
+    const text = textareaRef.current.value;
+    const lines = text.split("\n");
+    const transformedText = lines
+      .map((line) => mf98Transformer(line))
+      .join("\n");
+    setShownText(transformedText);
+  };
+
+  const handleCopy = () => {
+    const text = document.getElementById("shownText")?.textContent;
+    if (!text) return;
+    navigator.clipboard.writeText(text);
+    alert("クリップボードにコピーしました");
+  };
 
   return (
     <>
+      <div className="container">
+        <textarea ref={textareaRef} placeholder="Enter text here"></textarea>
+        <button onClick={handleTransform}>変換する</button>
+      </div>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <button onClick={handleCopy}>クリップボードにコピー</button>
+        <div className="container" id="shownText">
+          {shownText}
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
