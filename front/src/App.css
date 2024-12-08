@@ -1,0 +1,25 @@
+#root {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+button {
+  cursor: pointer;
+  padding: 10px;
+  width: fit-content;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 3px 3px 10px #bbbbbb, -3px -3px 10px #ffffff;
+}
+
+textarea {
+  resize: vertical;
+  width: 100%;
+  height: fit-content;
+  min-height: 200px;
+}
+.container {
+  padding: 20px;
+  white-space: pre-wrap;
+}
