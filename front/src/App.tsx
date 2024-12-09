@@ -26,11 +26,15 @@ function App() {
   return (
     <>
       <div className="container">
-        <textarea ref={textareaRef} placeholder="Enter text here"></textarea>
-        <button onClick={handleTransform}>変換する</button>
+        <textarea ref={textareaRef} placeholder="変換するテキストを入力" />
+        <button onClick={handleTransform} type="button">
+          変換する
+        </button>
       </div>
       <div>
-        <button onClick={handleCopy}>クリップボードにコピー</button>
+        <button onClick={handleCopy} type="button">
+          クリップボードにコピー
+        </button>
         <div className="container" id="shownText">
           {shownText}
         </div>
