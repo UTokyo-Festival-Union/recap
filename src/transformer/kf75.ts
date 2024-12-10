@@ -37,7 +37,7 @@ export const kf75Transformer: Transformer = (line) => {
   replacedLine = replacedLine.replace(/\\\\(.+?)\\\\/g, "*$1*");
 
   // 打ち消し線（%% で囲まれた部分）
-  replacedLine = replacedLine.replace(/%%(.+?)\\\\/g, "~~$1~~");
+  replacedLine = replacedLine.replace(/%%(.+?)%%/g, "~~$1~~");
 
   return replacedLine;
 };
