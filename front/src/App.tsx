@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import "./App.css";
-import { mf98Transformer } from "../../src/transformer/mf97";
+import { kf75Transformer } from "../../src/transformer/kf75";
 
 function App() {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -11,7 +11,7 @@ function App() {
     const text = textareaRef.current.value;
     const lines = text.split("\n");
     const transformedText = lines
-      .map((line) => mf98Transformer(line))
+      .map((line) => kf75Transformer(line))
       .join("\n");
     setShownText(transformedText);
   };
