@@ -25,7 +25,7 @@ export const mf98Transformer: Transformer = (line) => {
   // 引用
   if (replacedLine.startsWith("&&")) {
     // 行頭の && を > に置換する
-    replacedLine = `> ${replacedLine.slice(2)}`;
+    replacedLine = `| ${replacedLine.slice(2)}`;
   }
 
   // 次に行内の記法を変換する
